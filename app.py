@@ -1,10 +1,21 @@
 from fastapi import FastAPI
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(
     title="India WPIS Backend",
     description="Crime Against Women Analytics API (2001–2021)",
     version="1.0"
+)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Load dataset
