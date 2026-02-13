@@ -66,7 +66,11 @@ def normalize_state(name: str):
 
     name = name.lower().strip()
     name = name.replace("&", "and")
-    name = name.replace("ut", "")
+
+    # remove UT prefix ONLY if it starts with it
+    if name.startswith("ut "):
+        name = name[3:]
+
     name = " ".join(name.split())
 
     return STANDARD_STATES.get(name, name.title())
